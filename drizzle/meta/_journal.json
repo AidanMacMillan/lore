@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1788110274116,
+      "tag": "0000_tan_nico_minoru",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1788112603624,
+      "tag": "0001_eminent_bedlam",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1788130901898,
+      "tag": "0002_messy_supernaut",
+      "breakpoints": true
+    }
+  ]
+}

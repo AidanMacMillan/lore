@@ -1,0 +1,27 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "lore",
+	"compatibility_date": "2026-08-30",
+	"compatibility_flags": ["nodejs_als"],
+	"main": ".svelte-kit/cloudflare/_worker.js",
+	"assets": {
+		"binding": "ASSETS",
+		"directory": ".svelte-kit/cloudflare"
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "lore-prod",
+			"migrations_dir": "drizzle",
+			"database_id": "02982422-6de3-4c78-9a71-91c66c4915a8"
+		}
+	],
+	"r2_buckets": [
+		{
+			"binding": "ASSET_BUCKET",
+			"bucket_name": "lore-assets"
+		}
+	],
+	"workers_dev": true,
+	"preview_urls": true
+}

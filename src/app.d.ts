@@ -8,13 +8,19 @@ declare global {
 		interface Locals {
 			user?: User;
 			session?: Session;
-			auth: ReturnType<typeof createAuth>
+			auth: ReturnType<typeof createAuth>;
+		}
+
+		interface Platform {
+			env: Env;
+			ctx: ExecutionContext;
+			caches: CacheStorage;
+			cf?: IncomingRequestCfProperties;
 		}
 
 		// interface Error {}
 		// interface PageData {}
 		// interface PageState {}
-		// interface Platform {}
 	}
 }
 

@@ -5,22 +5,24 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview",
+		"build": "wrangler types --check && vite build",
+		"preview": "wrangler dev .svelte-kit/cloudflare/_worker.js --port 4173",
 		"prepare": "svelte-kit sync || echo ''",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check": "wrangler types --check && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
 		"db:push": "drizzle-kit push",
 		"db:generate": "drizzle-kit generate",
 		"db:migrate": "drizzle-kit migrate",
+		"db:local": "pnpm db:generate && wrangler d1 migrations apply lore-prod --local",
 		"db:studio": "drizzle-kit studio",
-		"auth:schema": "auth generate --config src/lib/server/auth.ts --output src/lib/server/db/auth.schema.ts --yes"
+		"auth:schema": "auth generate --config src/lib/server/auth.ts --output src/lib/server/db/auth.schema.ts --yes",
+		"gen": "wrangler types"
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
-		"@sveltejs/adapter-auto": "next",
+		"@sveltejs/adapter-cloudflare": "^7.2.8",
 		"@sveltejs/kit": "next",
 		"@sveltejs/vite-plugin-svelte": "^7.1.2",
 		"@tailwindcss/vite": "^4.3.0",
@@ -41,10 +43,15 @@
 		"tailwindcss": "^4.3.0",
 		"typescript": "^6.0.3",
 		"typescript-eslint": "^8.60.1",
-		"vite": "^8.0.16"
+		"vite": "^8.0.16",
+		"wrangler": "^4.97.0"
 	},
 	"imports": {
 		"#lib": "./src/lib/index.js",
 		"#lib/*": "./src/lib/*"
+	},
+	"dependencies": {
+		"clsx": "^2.1.1",
+		"tailwind-merge": "^3.6.0"
 	}
 }
