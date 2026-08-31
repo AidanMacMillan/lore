@@ -34,7 +34,10 @@
 	>
 		<Card class="w-full max-w-sm p-6 sm:p-8">
 			<div class="flex flex-col items-center gap-8">
-				<img src={logo} alt="Lore" class="size-12" />
+				<div class="flex flex-col items-center gap-4">
+					<img src={logo} alt="" class="size-12" />
+					<h1 class="text-xl font-semibold tracking-tight text-zinc-950">Sign in to Lore</h1>
+				</div>
 
 				<Button class="w-full" disabled={isSigningIn} onclick={signInWithGoogle}>
 					<svg
