@@ -40,3 +40,22 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+
+## Deployment
+
+Pushes to `main` deploy to Cloudflare through the `production` GitHub Environment. Configure the following values in that environment:
+
+Variables:
+
+- `CLOUDFLARE_ACCOUNT_ID`: Cloudflare account containing the Worker.
+- `ORIGIN`: Production app origin, such as `https://lore.example.com`.
+- `GOOGLE_CLIENT_ID`: Google OAuth client ID.
+
+Secrets:
+
+- `CLOUDFLARE_API_TOKEN`: Account-scoped token created from Cloudflare's Edit Cloudflare Workers template.
+- `BETTER_AUTH_SECRET`: High-entropy secret of at least 32 characters.
+- `GOOGLE_CLIENT_SECRET`: Google OAuth client secret.
+
+The D1 database and R2 bucket referenced by `wrangler.jsonc` must already exist. The deployment does not run database migrations.
+Configure Google OAuth with `${ORIGIN}/api/auth/callback/google` as an authorized redirect URI.
