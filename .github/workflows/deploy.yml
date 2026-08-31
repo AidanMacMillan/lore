@@ -41,6 +41,11 @@ jobs:
 
       - name: Build
         run: pnpm build
+        env:
+          ORIGIN: https://build.invalid
+          BETTER_AUTH_SECRET: build-only-placeholder-build-only-placeholder
+          GOOGLE_CLIENT_ID: build-only-placeholder
+          GOOGLE_CLIENT_SECRET: build-only-placeholder
 
       - name: Deploy
         uses: cloudflare/wrangler-action@ebbaa1584979971c8614a24965b4405ff95890e0 # v4
